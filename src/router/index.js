@@ -1,29 +1,43 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+// 메인 컴포넌트 호출
+import HelloWorld from "@/components/HelloWorld";
+// 게시판 리스트 컴포넌트 호출
+import List from "@/components/board/List";
+// 게시판 상세페이지 컴포넌트 호출
+import View from "@/components/board/View";
+// 게시판 리스트 컴포넌트 호출
+import Write from "@/components/board/Write";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    name: HelloWorld,
+    component: HelloWorld
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: "/board/list",
+    name: List,
+    component: List
+  },
+  {
+    path: "/board/write",
+    name: Write,
+    component: Write
+  },
+  {
+    path: "/board/view",
+    name: View,
+    component: View
   }
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;
